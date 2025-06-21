@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'trello', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .app {
+    @apply min-h-screen;
+  }
+  
+  .board-container {
+    @apply min-h-screen p-4;
+  }
+  
+  .list-container {
+    @apply bg-trello-gray rounded-lg p-2 min-w-64 max-w-64;
+  }
+  
+  .card {
+    @apply bg-white rounded shadow-sm p-3 mb-2 hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .card:hover {
+    @apply shadow-md;
+  }
+  
+  .add-button {
+    @apply bg-white bg-opacity-80 hover:bg-opacity-100 text-trello-dark-gray rounded p-2 w-full text-left transition-colors duration-200;
+  }
+  
+  .header-button {
+    @apply bg-trello-blue text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200;
+  }
+  
+  /* Drag and Drop Styles */
+  .card-ghost {
+    @apply opacity-50 bg-blue-100 shadow-lg transform rotate-2;
+  }
+  
+  .list-ghost {
+    @apply opacity-50 bg-blue-100 shadow-lg transform rotate-1;
+  }
+  
+  /* Ensure drag handles work properly */
+  [data-rbd-drag-handle-context-id] {
+    cursor: grab !important;
+  }
+  
+  [data-rbd-drag-handle-context-id]:active {
+    cursor: grabbing !important;
+  }
+  
+  /* Improve drag and drop visual feedback */
+  [data-rbd-droppable-context-id] {
+    min-height: 20px;
+  }
+  
+  /* Better focus states for editing */
+  .editing-input {
+    @apply bg-white border border-blue-300 rounded px-2 py-1 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  }
+  
+  .editing-textarea {
+    @apply bg-white border border-blue-300 rounded px-2 py-1 outline-none resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500;
+  }
+  
+  /* Drag handle styles */
+  .drag-handle {
+    @apply text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing p-1;
+  }
+  
+  /* Prevent text selection during drag */
+  .dragging {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+}
+
+/* Custom scrollbar */
+.board-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.board-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.board-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.board-container::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+} 
